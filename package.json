@@ -1,0 +1,26 @@
+{
+  "name": "bless-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Webpack plugin for bless",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magnetme/bless-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "bless",
+    "css"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Magnetme/bless-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/Magnetme/bless-webpack-plugin#readme",
+  "dependencies": {
+    "bless": "^3.0.3",
+    "lodash": "^3.10.0",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.10.1"
+  }
+}
