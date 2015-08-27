@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Magnetme/bless-webpack-plugin.git"
+    "url": "git+https://github.com/BlessCSS/bless-webpack-plugin.git"
   },
   "keywords": [
     "webpack",
@@ -15,9 +15,9 @@
   "author": "Tiddo Langerak <tiddolangerak+bless@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Magnetme/bless-webpack-plugin/issues"
+    "url": "https://github.com/BlessCSS/bless-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/Magnetme/bless-webpack-plugin#readme",
+  "homepage": "https://github.com/BlessCSS/bless-webpack-plugin#readme",
   "dependencies": {
     "babel-runtime": "^5.8.20",
     "bless": "4.0.0-alpha.0",
