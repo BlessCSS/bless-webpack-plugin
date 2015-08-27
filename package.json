@@ -12,25 +12,29 @@
     "bless",
     "css"
   ],
-  "license": "Apache-2.0",
+  "author": "Tiddo Langerak <tiddolangerak+bless@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Magnetme/bless-webpack-plugin/issues"
   },
   "homepage": "https://github.com/Magnetme/bless-webpack-plugin#readme",
   "dependencies": {
-    "bless": "^3.0.3",
-    "node-libs-browser": "^0.5.2",
+    "babel-runtime": "^5.8.20",
+    "bless": "4.0.0-alpha.0",
     "webpack": "^1.10.1"
   },
   "devDependencies": {
     "babel": "^5.8.21",
     "babel-eslint": "^4.1.0",
-    "eslint": "^1.2.1"
+    "css-loader": "^0.16.0",
+    "eslint": "^1.2.1",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "style-loader": "^0.12.3"
   },
-  "scripts" : {
-    "build" : "babel src --out-dir lib",
-    "clean" : "rm -r lib",
-    "lint" : "eslint ./",
-    "prepublish" : "npm run clean && npm run lint && npm run build"
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rm -r lib",
+    "lint": "eslint ./",
+    "prepublish": "npm run clean && npm run lint && npm run build"
   }
 }
