@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
-    "clean": "rm -r lib test/target",
+    "clean": "rm -rf lib demo/target",
     "lint": "eslint ./",
     "prepublish": "npm run clean && npm run lint && npm run build"
   }
