@@ -1,6 +1,5 @@
-var bless = require('bless');
-var RawSource = require('webpack/lib/RawSource');
-var _ = require('lodash');
+import bless from 'bless';
+import RawSource from 'webpack/lib/RawSource';
 
 module.exports = function(options, pattern) {
 	pattern = pattern || /\.css$/;
@@ -8,9 +7,9 @@ module.exports = function(options, pattern) {
 
 	return {
 		apply: function(compiler) {
-			compiler.plugin("this-compilation", function(compilation) {
-				compilation.plugin("optimize-assets", function(assets, callback) {
-					var pending = 0;
+			compiler.plugin('this-compilation', function(compilation) {
+				compilation.plugin('optimize-assets', function(assets, callback) {
+					let pending = 0;
 
 					function done(err) {
 						pending--;
