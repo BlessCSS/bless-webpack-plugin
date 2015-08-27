@@ -4,11 +4,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	context : __dirname,
 	entry : {
-		test : './index.js'
+		small : './small.js',
+		large : './large.js'
 	},
 	output : {
 		path : __dirname + '/target',
-		filename : 'out.js'
+		filename : '[name].js'
 	},
 	module : {
 		loaders : [
