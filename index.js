@@ -1,8 +1,7 @@
 var bless = require('bless');
 var RawSource = require('webpack/lib/RawSource');
-var _ = require('lodash');
 
-module.exports = function(options, pattern) {
+module.exports = function(options, pattern, outputFilename) {
 	pattern = pattern || /\.css$/;
 	options = options || {};
 
@@ -26,13 +25,15 @@ module.exports = function(options, pattern) {
 						.filter(pattern.test.bind(pattern))
 						.forEach(function(name) {
 							pending++;
-							new bless.Parser({ output: name, options : options })
+							new bless.Parser({ output: outputFilename || name, options : options })
 								.parse(assets[name].source(), function(err, files) {
 									if (err) {
 										done(err);
 										return;
 									}
-									delete assets[name];
+									if (!outputFilename) {
+										delete assets[name];
+									}
 									files.forEach(function(file) {
 										assets[file.filename] = new RawSource(file.content);
 									});
