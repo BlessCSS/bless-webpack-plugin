@@ -26,7 +26,10 @@ module.exports = function(options, pattern, outputFilename) {
 						.filter(pattern.test.bind(pattern))
 						.forEach(function(name) {
 							pending++;
-							basename = name.substr(name.lastIndexOf('/') + 1, name.lastIndexOf('.'));
+							basename = name.substring(name.lastIndexOf('/') + 1);
+							if (basename.lastIndexOf('.') !== -1) {
+								basename = basename.substring(0, basename.lastIndexOf('.'));
+							}
 							output = compilation.getPath(outputFilename, {
 								filename: name,
 								basename: basename
