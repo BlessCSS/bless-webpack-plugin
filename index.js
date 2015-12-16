@@ -1,16 +1,17 @@
 var bless = require('bless');
 var RawSource = require('webpack/lib/RawSource');
-var _ = require('lodash');
+var path = require('path');
 
-module.exports = function(options, pattern) {
+module.exports = function(options, pattern, outputFilename) {
 	pattern = pattern || /\.css$/;
 	options = options || {};
+	outputFilename = outputFilename || '[file]';
 
 	return {
 		apply: function(compiler) {
 			compiler.plugin("this-compilation", function(compilation) {
 				compilation.plugin("optimize-assets", function(assets, callback) {
-					var pending = 0;
+					var pending = 0, basename, output;
 
 					function done(err) {
 						pending--;
@@ -26,13 +27,20 @@ module.exports = function(options, pattern) {
 						.filter(pattern.test.bind(pattern))
 						.forEach(function(name) {
 							pending++;
-							new bless.Parser({ output: name, options : options })
+							basename = path.basename(name, path.extname(name));
+							output = compilation.getPath(outputFilename, {
+								filename: name,
+								basename: basename
+							});
+							new bless.Parser({ output: output, options : options })
 								.parse(assets[name].source(), function(err, files) {
 									if (err) {
 										done(err);
 										return;
 									}
-									delete assets[name];
+									if (outputFilename === name) {
+										delete assets[name];
+									}
 									files.forEach(function(file) {
 										assets[file.filename] = new RawSource(file.content);
 									});
