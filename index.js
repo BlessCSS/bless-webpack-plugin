@@ -1,5 +1,6 @@
 var bless = require('bless');
 var RawSource = require('webpack/lib/RawSource');
+var path = require('path');
 
 module.exports = function(options, pattern, outputFilename) {
 	pattern = pattern || /\.css$/;
@@ -26,10 +27,7 @@ module.exports = function(options, pattern, outputFilename) {
 						.filter(pattern.test.bind(pattern))
 						.forEach(function(name) {
 							pending++;
-							basename = name.substring(name.lastIndexOf('/') + 1);
-							if (basename.lastIndexOf('.') !== -1) {
-								basename = basename.substring(0, basename.lastIndexOf('.'));
-							}
+							basename = path.basename(name, path.extname(name));
 							output = compilation.getPath(outputFilename, {
 								filename: name,
 								basename: basename
